@@ -8,18 +8,26 @@ namespace PlaywrightTests;
 public class Tests : PageTest
 {
     [Test]
-    public async Task Download_For_VS2019()
+    public async Task Download_APIClientCodeGenerator_For_VS2019()
     {
         const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator";
-        const string output = "vs2019.vsix";
+        const string output = "APIClientCodeGenerator.vsix";
         await Download(url, output);
     }
 
     [Test]
-    public async Task Download_For_VS2022()
+    public async Task Download_APIClientCodeGenerator2022_For_VS2022()
     {
         const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022";
-        const string output = "vs2022.vsix";
+        const string output = "APIClientCodeGenerator2022.vsix";
+        await Download(url, output);
+    }
+
+    [Test]
+    public async Task Download_ResWFileCodeGenerator()
+    {
+        const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ResWFileCodeGenerator";
+        const string output = "ResWFileCodeGenerator.vsix";
         await Download(url, output);
     }
 
