@@ -5,7 +5,7 @@ namespace PlaywrightTests;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]
-public class Tests : PageTest
+public class MarpletplaceTests : PageTest
 {
     [Test]
     public async Task Download_APIClientCodeGenerator_For_VS2019()
