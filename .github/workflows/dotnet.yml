@@ -1,10 +1,10 @@
-name: Tests
+name: .NET
 
 on:
   workflow_dispatch:
   push:
     paths: 
-    - '.github/workflows/tests.yml'
+    - '.github/workflows/dotnet.yml'
     branches: 
     - '*'
   schedule:
@@ -40,7 +40,7 @@ jobs:
         dotnet-version: 6.0.x
     
     - name: Run tests
-      working-directory: tests
+      working-directory: dotnet
       run: |
         dotnet build
         ./bin/Debug/net6.0/playwright.ps1 install
