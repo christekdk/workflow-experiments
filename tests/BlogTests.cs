@@ -13,7 +13,7 @@ public class BlogTests : PageTest
     {
         const string url = "https://christianhelle.com";
 
-        var browser = await Playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions { Headless = Debugger.IsAttached });
+        var browser = await Playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions { Headless = !Debugger.IsAttached });
         var context = await browser.NewContextAsync(new BrowserNewContextOptions { AcceptDownloads = true });
         var page = await context.NewPageAsync();
         await page.GotoAsync(url);
