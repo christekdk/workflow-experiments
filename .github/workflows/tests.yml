@@ -44,7 +44,7 @@ jobs:
       run: |
         dotnet build
         ./bin/Debug/net6.0/playwright.ps1 install
-        dotnet test -- NUnit.NumberOfTestWorkers=5
+        dotnet test -c Release -- NUnit.NumberOfTestWorkers=5
     
     - name: Install VSIX 2019
       run: Start-Process -FilePath 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q vs2019.vsix' -Wait
