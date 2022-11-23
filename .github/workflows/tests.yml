@@ -39,7 +39,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     
-    - name: Download VSIX for VS 2019
+    - name: Run tests
       working-directory: tests
       run: |
         dotnet build
