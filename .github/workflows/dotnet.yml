@@ -39,6 +39,7 @@ jobs:
     
     - name: Run tests
       working-directory: dotnet
+      continue-on-error: true
       run: |
         dotnet build
         ./bin/Debug/net6.0/playwright.ps1 install
