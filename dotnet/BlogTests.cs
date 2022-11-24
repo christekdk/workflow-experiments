@@ -9,7 +9,6 @@ public class BlogTests : PageTest
 {
     private readonly BrowserTypeLaunchOptions browserTypeLaunchOptions = new BrowserTypeLaunchOptions
     {
-        ChromiumSandbox = true,
 #if DEBUG
         Headless = false,
 #endif
