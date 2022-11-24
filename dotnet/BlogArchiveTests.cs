@@ -9,6 +9,7 @@ public class BlogArchiveTests : PageTest
 {
     private readonly BrowserTypeLaunchOptions browserTypeLaunchOptions = new BrowserTypeLaunchOptions
     {
+        ChromiumSandbox = true,
 #if DEBUG
         Headless = false,
 #endif
@@ -17,10 +18,10 @@ public class BlogArchiveTests : PageTest
     [Test]
     public async Task Crawl_Archive()
     {
-        const string baseUrl = $"http://127.0.0.1:4000";
+        const string baseUrl = $"https://christianhelle.com";
         const string startUrl = $"{baseUrl}/archives";
 
-        var browser = await Playwright.Firefox.LaunchAsync(browserTypeLaunchOptions);
+        var browser = await Playwright.Chromium.LaunchAsync(browserTypeLaunchOptions);
         var context = await browser.NewContextAsync();
         var Page = await context.NewPageAsync();
 
