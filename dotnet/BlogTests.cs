@@ -40,21 +40,9 @@ public class BlogTests : PageTest
             await Launch(startUrl, i, "a[href='/2022/09/orchestrated-etl.html']");
     }
 
-    [Test]
-    public async Task Crawl_Archive()
-    {
-        const string startUrl = "https://christianhelle.com/archives";
-
-        var browser = await Playwright.Firefox.LaunchAsync(browserTypeLaunchOptions);
-        var context = await browser.NewContextAsync();
-        var page = await context.NewPageAsync();
-        await page.GotoAsync(startUrl);
-
-    }
-
     private async Task Launch(string url, int index, params string[] selectors)
     {
-        var browser = await Playwright.Chromium.LaunchAsync(browserTypeLaunchOptions);
+        var browser = await Playwright.Firefox.LaunchAsync(browserTypeLaunchOptions);
         var context = await browser.NewContextAsync();
         var page = await context.NewPageAsync();
         await page.GotoAsync(url);
@@ -66,6 +54,5 @@ public class BlogTests : PageTest
             await page.ClickAsync("a[id='cookie-notice-accept']");
         foreach (var selector in selectors)
             await page.ClickAsync(selector);
-        await page.ClickAsync("span[class='IL_AD']", new PageClickOptions { NoWaitAfter = true });
     }
 }
