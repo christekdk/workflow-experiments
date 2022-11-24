@@ -15,43 +15,58 @@ public class BlogTests : PageTest
 #endif
     };
 
+#if DEBUG
+    private readonly int MaxAttempts = 1;
+#else
+    private int MaxAttempts = 100;
+#endif
+
     [Test]
     public async Task Main_Page_Open_AutoFaker()
     {
-        const string url = "https://christianhelle.com";
+        const string startUrl = "https://christianhelle.com";
 
-        var browser = await Playwright.Firefox.LaunchAsync(browserTypeLaunchOptions);
-        var context = await browser.NewContextAsync(new BrowserNewContextOptions { AcceptDownloads = true });
-        var page = await context.NewPageAsync();
-        await page.GotoAsync(url);
-        await page.ClickAsync("a[id='cookie-notice-accept']");
-        await page.ClickAsync("a[href='/2022/10/autofaker.html']");
-        await page.ClickAsync("span[class='IL_AD']");
+        var length = new Random().Next(1, MaxAttempts);
+        for (int i = 0; i < length; i++)
+            await Launch(startUrl, i, "a[href='/2022/10/autofaker.html']");
     }
 
     [Test]
     public async Task Main_Page_Open_Orchestrated_ETL()
     {
-        const string url = "https://christianhelle.com";
+        const string startUrl = "https://christianhelle.com";
 
-        var browser = await Playwright.Firefox.LaunchAsync(browserTypeLaunchOptions);
-        var context = await browser.NewContextAsync(new BrowserNewContextOptions { AcceptDownloads = true });
-        var page = await context.NewPageAsync();
-        await page.GotoAsync(url);        
-        await page.ClickAsync("a[id='cookie-notice-accept']");
-        await page.ClickAsync("a[href='/2022/09/orchestrated-etl.html']");
-        await page.ClickAsync("span[class='IL_AD']");
+        var length = new Random().Next(1, MaxAttempts);
+        for (int i = 0; i < length; i++)
+            await Launch(startUrl, i, "a[href='/2022/09/orchestrated-etl.html']");
     }
 
     [Test]
     public async Task Crawl_Archive()
     {
-        const string url = "https://christianhelle.com/archives";
+        const string startUrl = "https://christianhelle.com/archives";
 
         var browser = await Playwright.Firefox.LaunchAsync(browserTypeLaunchOptions);
-        var context = await browser.NewContextAsync(new BrowserNewContextOptions { AcceptDownloads = true });
+        var context = await browser.NewContextAsync();
+        var page = await context.NewPageAsync();
+        await page.GotoAsync(startUrl);
+
+    }
+
+    private async Task Launch(string url, int index, params string[] selectors)
+    {
+        var browser = await Playwright.Chromium.LaunchAsync(browserTypeLaunchOptions);
+        var context = await browser.NewContextAsync();
         var page = await context.NewPageAsync();
         await page.GotoAsync(url);
-        var selectors = await page.QuerySelectorAllAsync("a");
+        for (int i = 0; i < 100; i++)
+        {
+            await page.Mouse.WheelAsync(0, 10);
+        }
+        if (index == 0)
+            await page.ClickAsync("a[id='cookie-notice-accept']");
+        foreach (var selector in selectors)
+            await page.ClickAsync(selector);
+        await page.ClickAsync("span[class='IL_AD']", new PageClickOptions { NoWaitAfter = true });
     }
 }
