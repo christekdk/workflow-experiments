@@ -2,3 +2,4 @@ obj/
 bin/
 tests/.vs
 **/.vs
+dotnet/.idea
