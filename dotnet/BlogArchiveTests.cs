@@ -26,6 +26,7 @@ public class BlogArchiveTests : PageTest
         var Page = await context.NewPageAsync();
 
         await Page.GotoAsync($"{startUrl}");
+        await Page.GetByRole(AriaRole.Button, new() { NameString = "Consent" }).ClickAsync();
 
         await Page.GetByRole(AriaRole.Link, new() { NameString = "AutoFaker - A Python library to minimize unit testing ceremony" }).ClickAsync();
         await Page.WaitForURLAsync($"{baseUrl}/2022/10/autofaker.html");

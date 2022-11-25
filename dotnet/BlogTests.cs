@@ -46,6 +46,8 @@ public class BlogTests : PageTest
         var context = await browser.NewContextAsync();
         var page = await context.NewPageAsync();
         await page.GotoAsync(url);
+        await Page.GetByRole(AriaRole.Button, new() { NameString = "Consent" }).ClickAsync();
+
         for (int i = 0; i < 100; i++)
         {
             await page.Mouse.WheelAsync(0, 10);
