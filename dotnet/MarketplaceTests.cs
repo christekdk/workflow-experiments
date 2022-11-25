@@ -64,9 +64,6 @@ public class MarpletplaceTests : PageTest
             var page = await context.NewPageAsync();
             await page.GotoAsync(url);
 
-            if (i % 2 == 0)
-                continue;
-
             var waitForDownloadTask = page.WaitForDownloadAsync();
             var button = page.Locator("button:has-text('Download')");
             await button.ClickAsync();
