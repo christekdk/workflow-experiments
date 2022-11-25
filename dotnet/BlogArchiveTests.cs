@@ -58,10 +58,6 @@ public class BlogArchiveTests : PageTest
         await page.WaitForURLAsync($"{baseUrl}/2019/06/generate-resx-translations-using-google.html");
         await ScrollDown(page);
 
-        await page.GetByRole(AriaRole.Link, new() { NameString = "Generate Resx Translations from Google Sheets" }).ClickAsync();
-        await page.WaitForURLAsync($"{baseUrl}/2019/06/generate-resx-translations-using-google.html");
-        await ScrollDown(page);
-
         await page.GetByRole(AriaRole.Link, new() { NameString = "Scrollable UISegmentedControl for Xamarin.iOS" }).ClickAsync();
         await page.WaitForURLAsync($"{baseUrl}/2019/06/scrollable-uisegmentedcontrol-for.html");
         await ScrollDown(page);
@@ -76,10 +72,6 @@ public class BlogArchiveTests : PageTest
 
         await page.GetByRole(AriaRole.Link, new() { NameString = "Working with Native Bitmap pixel buffers in Xamarin.Forms" }).ClickAsync();
         await page.WaitForURLAsync($"{baseUrl}/2016/09/working-with-native-bitmap-pixel.html");
-        await ScrollDown(page);
-
-        await page.GetByRole(AriaRole.Link, new() { NameString = "AppCenter Extensions for Xamarin.Forms" }).ClickAsync();
-        await page.WaitForURLAsync($"{baseUrl}/2020/02/appcenter-extensions-for-xamarinforms.html");
         await ScrollDown(page);
 
         await page.GetByRole(AriaRole.Link, new() { NameString = "Over 2 years of Xamarin" }).ClickAsync();
@@ -109,8 +101,6 @@ public class BlogArchiveTests : PageTest
         await page.GetByRole(AriaRole.Link, new() { NameString = "Accessing the Accelerometer from HTML5 and Javascript with Windows Phone 7" }).ClickAsync();
         await page.WaitForURLAsync($"{baseUrl}/2012/03/accessing-accelerometer-from-html5-and.html");
         await ScrollDown(page);
-
-        await page.GetByRole(AriaRole.Heading, new() { NameString = "2019" }).ClickAsync();
 
         await page.GetByRole(AriaRole.Link, new() { NameString = "Integrating HTML5 and Javascript with Windows Phone 7" }).ClickAsync();
         await page.WaitForURLAsync($"{baseUrl}/2012/03/integrating-html5-and-javascript-with.html");
