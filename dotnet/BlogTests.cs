@@ -9,6 +9,7 @@ public class BlogTests : PageTest
 {
     private readonly BrowserTypeLaunchOptions browserTypeLaunchOptions = new BrowserTypeLaunchOptions
     {
+        ChromiumSandbox = true,
 #if DEBUG
         Headless = false,
 #endif
@@ -42,19 +43,30 @@ public class BlogTests : PageTest
 
     private async Task Launch(string url, int index, params string[] selectors)
     {
-        var browser = await Playwright.Firefox.LaunchAsync(browserTypeLaunchOptions);
+        var browser = await Playwright.Chromium.LaunchAsync(browserTypeLaunchOptions);
         var context = await browser.NewContextAsync();
         var page = await context.NewPageAsync();
         await page.GotoAsync(url);
+
         await Page.GetByRole(AriaRole.Button, new() { NameString = "Consent" }).ClickAsync();
+        await Task.Delay(1000);
 
         for (int i = 0; i < 100; i++)
         {
             await page.Mouse.WheelAsync(0, 10);
         }
+
         if (index == 0)
             await page.ClickAsync("a[id='cookie-notice-accept']");
+
         foreach (var selector in selectors)
+        {
             await page.ClickAsync(selector);
+            
+            for (int i = 0; i < 100; i++)
+            {
+                await page.Mouse.WheelAsync(0, 10);
+            }
+        }
     }
 }
