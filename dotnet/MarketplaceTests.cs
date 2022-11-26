@@ -24,14 +24,14 @@ public class MarpletplaceTests : PageTest
 #if DEBUG
     private readonly int MaxAttempts = 1;
 #else
-    private int MaxAttempts = 100;
+    private int MaxAttempts = 10;
 #endif
 
     [Test]
     public async Task Download_APIClientCodeGenerator_For_VS2019()
     {
         const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator";
-        const string output = "APIClientCodeGenerator.vsix";
+        const string output = "vs2019.vsix";
         await Download(url, output);
     }
 
@@ -39,7 +39,7 @@ public class MarpletplaceTests : PageTest
     public async Task Download_APIClientCodeGenerator2022_For_VS2022()
     {
         const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022";
-        const string output = "APIClientCodeGenerator2022.vsix";
+        const string output = "vs2022.vsix";
         await Download(url, output);
         Assert.True(File.Exists(output));
     }
@@ -59,6 +59,7 @@ public class MarpletplaceTests : PageTest
         var length = random.Next(1, MaxAttempts);
         for (int i = 0; i < length; i++)
         {
+            var filename = i + "_" + output;
             var browser = await Playwright.Firefox.LaunchAsync(browserTypeLaunchOptions);
             var context = await browser.NewContextAsync(options);
             var page = await context.NewPageAsync();
