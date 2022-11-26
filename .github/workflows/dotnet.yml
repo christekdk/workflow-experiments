@@ -3,13 +3,12 @@ name: .NET
 on:
   workflow_dispatch:
   push:
-    branches: 
-    - '*'
+    branches:
+      - "*"
   schedule:
-    - cron: '0 */1 * * *'
+    - cron: "0 */1 * * *"
 
 jobs:
-
   Download:
     name: "Download and Install (${{ matrix.os }})"
     runs-on: ${{ matrix.os }}
@@ -17,40 +16,51 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        format: [ json, yaml ]
-        version: [ V2, V3 ]
-        os: [
-          ubuntu-18.04,
-          ubuntu-20.04,
-          ubuntu-22.04,
-          macos-10.15,
-          macos-11,
-          macos-12,
-          windows-2019,
-          windows-2022
-        ]
-    
+        format: [json, yaml]
+        version: [V2, V3]
+        os:
+          [
+            ubuntu-18.04,
+            ubuntu-20.04,
+            ubuntu-22.04,
+            macos-10.15,
+            macos-11,
+            macos-12,
+            windows-2019,
+            windows-2022,
+          ]
+
     steps:
-    - uses: actions/checkout@v2   
-    - name: Setup .NET versions
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x
-    
-    - name: Run tests
-      working-directory: dotnet
-      continue-on-error: true
-      run: |
-        dotnet build
-        ./bin/Debug/net6.0/playwright.ps1 install
-        dotnet test -c Release -- NUnit.NumberOfTestWorkers=5
-    
-    - name: Install VSIX 2019
-      run: Start-Process -FilePath 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q vs2019.vsix' -Wait
-      working-directory: tests/bin/Debug/net6.0
-      if: ${{ matrix.os == 'windows-2019' }}
-      
-    - name: Install VSIX 2022
-      run: Start-Process -FilePath 'C:/Program Files/Microsoft Visual Studio/2022/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q vs2022.vsix' -Wait
-      working-directory: tests/bin/Debug/net6.0
-      if: ${{ matrix.os == 'windows-2022' }}
+      - uses: actions/checkout@v2
+      - name: Setup .NET versions
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Run tests
+        working-directory: dotnet
+        continue-on-error: true
+        run: |
+          dotnet build
+          ./bin/Debug/net6.0/playwright.ps1 install
+          dotnet test -c Release -- NUnit.NumberOfTestWorkers=5
+
+      - name: Install VSIX 2019
+        run: Start-Process -FilePath 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q 0_vs2019.vsix' -Wait
+        working-directory: tests/bin/Debug/net6.0
+        if: ${{ matrix.os == 'windows-2019' }}
+
+      - name: Install VSIX 2022
+        run: Start-Process -FilePath 'C:/Program Files/Microsoft Visual Studio/2022/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q 0_vs2022.vsix' -Wait
+        working-directory: tests/bin/Debug/net6.0
+        if: ${{ matrix.os == 'windows-2022' }}
+
+      - name: Install ResW Code Generator (2019)
+        run: Start-Process -FilePath 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q 0_ResWFileCodeGenerator.vsix' -Wait
+        working-directory: tests/bin/Debug/net6.0
+        if: ${{ matrix.os == 'windows-2019' }}
+
+      - name: Install ResW Code Generator (2022)
+        run: Start-Process -FilePath 'C:/Program Files/Microsoft Visual Studio/2022/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q 0_ResWFileCodeGenerator.vsix' -Wait
+        working-directory: tests/bin/Debug/net6.0
+        if: ${{ matrix.os == 'windows-2022' }}
