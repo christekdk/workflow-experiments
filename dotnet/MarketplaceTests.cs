@@ -60,7 +60,7 @@ public class MarpletplaceTests : PageTest
         for (int i = 0; i < length; i++)
         {
             var filename = i + "_" + output;
-            var browser = await Playwright.Firefox.LaunchAsync(browserTypeLaunchOptions);
+            IBrowser browser = await (i % 2 == 0 ? Playwright.Firefox : Playwright.Chromium).LaunchAsync(browserTypeLaunchOptions);
             var context = await browser.NewContextAsync(options);
             var page = await context.NewPageAsync();
             await page.GotoAsync(url);
