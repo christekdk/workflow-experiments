@@ -24,7 +24,7 @@ public class MarpletplaceTests : PageTest
 #if DEBUG
     private readonly int MaxAttempts = 1;
 #else
-    private int MaxAttempts = 10;
+    private int MaxAttempts = 20;
 #endif
 
     [Test]
@@ -44,14 +44,14 @@ public class MarpletplaceTests : PageTest
         Assert.True(File.Exists(output));
     }
 
-    [Test]
-    public async Task Download_ResWFileCodeGenerator()
-    {
-        const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ResWFileCodeGenerator";
-        const string output = "ResWFileCodeGenerator.vsix";
-        await Download(url, output);
-        Assert.True(File.Exists(output));
-    }
+    // [Test]
+    // public async Task Download_ResWFileCodeGenerator()
+    // {
+    //     const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ResWFileCodeGenerator";
+    //     const string output = "ResWFileCodeGenerator.vsix";
+    //     await Download(url, output);
+    //     Assert.True(File.Exists(output));
+    // }
 
     private async Task Download(string url, string output)
     {
