@@ -5,27 +5,40 @@ using Microsoft.Playwright;
 [TestFixture]
 public class GithubTests : PageTest
 {
+    private readonly BrowserTypeLaunchOptions browserTypeLaunchOptions = new BrowserTypeLaunchOptions
+    {
+        ChromiumSandbox = true,
+#if DEBUG
+        Headless = false,
+#endif
+    };
+
+    private readonly BrowserNewContextOptions options =
+        new BrowserNewContextOptions
+        {
+            AcceptDownloads = true
+        };
+
     [Test]
     public async Task SqlCeQueryAnalyzer_Download()
     {
-        await Page.GotoAsync("https://github.com/christianhelle");
+        var browser = await Playwright.Chromium.LaunchAsync(browserTypeLaunchOptions);
+        var context = await browser.NewContextAsync(options);
+        
+        var page = await context.NewPageAsync();
+        await page.GotoAsync("https://github.com/christianhelle");
 
-        await Page.GetByRole(AriaRole.Link, new() { NameString = "sqlcequery" }).ClickAsync();
-        await Page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery");
+        await page.GetByRole(AriaRole.Link, new() { NameString = "sqlcequery" }).ClickAsync();
+        await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery");
 
-        await Page.GetByRole(AriaRole.Link, new() { NameString = "1.2.6626 Latest May 1, 2021on May 1, 2021" }).ClickAsync();
-        await Page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.2.6626");
+        await page.GetByRole(AriaRole.Link, new() { NameString = "1.2.6626 Latest May 1, 2021on May 1, 2021" }).ClickAsync();
+        await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.2.6626");
+        
+        await page.Mouse.WheelAsync(0, 1000);
 
-        await Page.RunAndWaitForDownloadAsync(async () =>
+        await page.RunAndWaitForDownloadAsync(async () =>
         {
-            await Page.GetByRole(AriaRole.Link, new() { NameString = "SQL.Compact.Query.Analyzer.Setup.v1.2.6626.exe" }).ClickAsync();
+            await page.GetByRole(AriaRole.Link, new() { NameString = "SQL.Compact.Query.Analyzer.Setup.v1.2.6626.exe" }).ClickAsync();
         });
-        await Page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.2.6626");
-
-        await Page.RunAndWaitForDownloadAsync(async () =>
-        {
-            await Page.GetByRole(AriaRole.Link, new() { NameString = "SQL.Compact.Query.Analyzer.v1.2.6626.zip" }).ClickAsync();
-        });
-        await Page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.2.6626");
     }
 }
