@@ -19,6 +19,12 @@ public class GithubTests : PageTest
             AcceptDownloads = true
         };
 
+#if DEBUG
+    private readonly int MaxAttempts = 1;
+#else
+    private int MaxAttempts = 50;
+#endif
+
     [Test]
     public async Task SqlCeQueryAnalyzer_Download()
     {

@@ -24,7 +24,7 @@ public class MarpletplaceTests : PageTest
 #if DEBUG
     private readonly int MaxAttempts = 1;
 #else
-    private int MaxAttempts = 20;
+    private int MaxAttempts = 50;
 #endif
 
     [Test]
