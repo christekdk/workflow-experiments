@@ -22,9 +22,9 @@ public class MarpletplaceTests : PageTest
         };
 
 #if DEBUG
-    private readonly int MaxAttempts = 1;
+    private const int MaxAttempts = 1;
 #else
-    private int MaxAttempts = 50;
+    private const int MaxAttempts = 50;
 #endif
 
     [Test]
@@ -32,7 +32,7 @@ public class MarpletplaceTests : PageTest
     {
         const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator";
         const string output = "vs2019.vsix";
-        await Download(url, output);
+        await Download(url, output, 1);
     }
 
     [Test]
@@ -44,19 +44,19 @@ public class MarpletplaceTests : PageTest
         Assert.True(File.Exists(output));
     }
 
-    [Test]
-    public async Task Download_ResWFileCodeGenerator()
-    {
-        const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ResWFileCodeGenerator";
-        const string output = "ResWFileCodeGenerator.vsix";
-        await Download(url, output);
-        Assert.True(File.Exists(output));
-    }
+    // [Test]
+    // public async Task Download_ResWFileCodeGenerator()
+    // {
+    //     const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ResWFileCodeGenerator";
+    //     const string output = "ResWFileCodeGenerator.vsix";
+    //     await Download(url, output);
+    //     Assert.True(File.Exists(output));
+    // }
 
-    private async Task Download(string url, string output)
+    private async Task Download(string url, string output, int maxAttempts = MaxAttempts)
     {
         var random = new Random();
-        var length = random.Next(1, MaxAttempts);
+        var length = random.Next(1, maxAttempts);
         for (int i = 0; i < length; i++)
         {
             var filename = i + "_" + output;
