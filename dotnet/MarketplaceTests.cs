@@ -44,14 +44,14 @@ public class MarpletplaceTests : PageTest
         Assert.True(File.Exists(output));
     }
 
-    // [Test]
-    // public async Task Download_ResWFileCodeGenerator()
-    // {
-    //     const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ResWFileCodeGenerator";
-    //     const string output = "ResWFileCodeGenerator.vsix";
-    //     await Download(url, output);
-    //     Assert.True(File.Exists(output));
-    // }
+    [Test]
+    public async Task Download_ResWFileCodeGenerator()
+    {
+        const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ResWFileCodeGenerator";
+        const string output = "ResWFileCodeGenerator.vsix";
+        await Download(url, output, 1);
+        Assert.True(File.Exists(output));
+    }
 
     private async Task Download(string url, string output, int maxAttempts = MaxAttempts)
     {
