@@ -33,6 +33,7 @@ public class MarpletplaceTests : PageTest
         const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator";
         const string output = "vs2019.vsix";
         await Download(url, output, 1);
+        Assert.True(File.Exists(output));
     }
 
     [Test]
