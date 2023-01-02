@@ -57,7 +57,7 @@ public class MarpletplaceTests : PageTest
     private async Task Download(string url, string output, int maxAttempts = MaxAttempts)
     {
         var random = new Random();
-        var length = random.Next(1, maxAttempts);
+        var length = maxAttempts == 1 ? 1 : random.Next(1, maxAttempts);
         for (int i = 0; i < length; i++)
         {
             var filename = i + "_" + output;
