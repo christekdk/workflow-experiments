@@ -17,9 +17,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        random: [1,2,3,4,5,6,7,8,9,10]
-        format: [json, yaml]
-        version: [V2, V3]
         os:
           [
             ubuntu-18.04,
