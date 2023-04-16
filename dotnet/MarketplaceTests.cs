@@ -36,14 +36,14 @@ public class MarpletplaceTests : PageTest
     //     Assert.True(File.Exists(output));
     // }
 
-    // [Test]
-    // public async Task Download_APIClientCodeGenerator_For_VS2019()
-    // {
-    //     const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator";
-    //     const string output = "vs2019.vsix";
-    //     await Download(url, output);
-    //     Assert.True(File.Exists(output));
-    // }
+    [Test]
+    public async Task Download_APIClientCodeGenerator_For_VS2019()
+    {
+        const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator";
+        const string output = "vs2019.vsix";
+        await Download(url, output);
+        Assert.True(File.Exists(output));
+    }
 
     [Test]
     public async Task Download_APIClientCodeGenerator2022_For_VS2022()

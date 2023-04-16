@@ -41,22 +41,22 @@ public class GithubTests : PageTest
             await page.GetByRole(AriaRole.Link, new() { NameString = "sqlcequery" }).ClickAsync();
             await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery");
 
-            await page.GetByRole(AriaRole.Link, new() { NameString = "1.2.6626 Latest May 1, 2021on May 1, 2021" }).ClickAsync();
-            await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.2.6626");
+            await page.GetByRole(AriaRole.Link, new() { NameString = "1.3.3 Latest" }).ClickAsync();
+            await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.3.3");
 
             await page.Mouse.WheelAsync(0, 1000);
 
             await page.RunAndWaitForDownloadAsync(async () =>
             {
-                await page.GetByRole(AriaRole.Link, new() { NameString = "SQL.Compact.Query.Analyzer.Setup.v1.2.6626.exe" }).ClickAsync();
+                await page.GetByRole(AriaRole.Link, new() { NameString = "SQL.Compact.Query.Analyzer.Setup.v1.3.3.exe" }).ClickAsync();
             });
-            await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.2.6626");
+            await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.3.3");
 
             await page.RunAndWaitForDownloadAsync(async () =>
             {
-                await page.GetByRole(AriaRole.Link, new() { NameString = "SQL.Compact.Query.Analyzer.v1.2.6626.zip" }).ClickAsync();
+                await page.GetByRole(AriaRole.Link, new() { NameString = "SQL.Compact.Query.Analyzer.v1.3.3.zip" }).ClickAsync();
             });
-            await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.2.6626");
+            await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.3.3");
         }
     }
 }
