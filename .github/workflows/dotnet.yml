@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - "*"
+  schedule:
+    - cron: "*/15 * * * *"
 
 jobs:
   Download:
@@ -15,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [          
+        os: [
           ubuntu-20.04,
           ubuntu-22.04,
           macos-12,
