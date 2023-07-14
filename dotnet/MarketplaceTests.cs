@@ -22,7 +22,7 @@ public class MarpletplaceTests : PageTest
         };
 
 #if DEBUG
-    private const int MaxAttempts = 1;
+    private const int MaxAttempts = 10;
 #else
     private const int MaxAttempts = 50;
 #endif
@@ -74,12 +74,13 @@ public class MarpletplaceTests : PageTest
             var context = await browser.NewContextAsync(options);
             var page = await context.NewPageAsync();
             await page.GotoAsync(url);
-
-            var waitForDownloadTask = page.WaitForDownloadAsync();
-            var button = page.Locator("button:has-text('Download')");
-            await button.ClickAsync();
-            var download = await waitForDownloadTask;
-            await download.SaveAsAsync(output);
+            var download = await page.RunAndWaitForDownloadAsync(
+                async () =>
+                {
+                    await page
+                        .GetByRole(AriaRole.Button, new() { NameString = "Download" })
+                        .ClickAsync();
+                });
         }
     }
 }
