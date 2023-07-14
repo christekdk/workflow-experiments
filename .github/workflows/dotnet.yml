@@ -4,7 +4,9 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - "*"
+      - "*"  
+  schedule:
+    - cron: "*/15 * * * *"
 
 jobs:
   Download:
