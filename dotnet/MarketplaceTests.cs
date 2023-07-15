@@ -42,7 +42,7 @@ public class MarpletplaceTests : PageTest
         const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator";
         const string output = "vs2019.vsix";
         await Download(url, output);
-        Assert.True(File.Exists(output));
+        Assert.That(File.Exists(output), Is.True);
     }
 
     [Test]
@@ -51,7 +51,7 @@ public class MarpletplaceTests : PageTest
         const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022";
         const string output = "vs2022.vsix";
         await Download(url, output);
-        Assert.True(File.Exists(output));
+        Assert.That(File.Exists(output), Is.True);
     }
 
     // [Test]
@@ -81,6 +81,8 @@ public class MarpletplaceTests : PageTest
                         .GetByRole(AriaRole.Button, new() { NameString = "Download" })
                         .ClickAsync();
                 });
+                
+            await download.SaveAsAsync(output);
         }
     }
 }
