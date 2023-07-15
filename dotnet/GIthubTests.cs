@@ -1,6 +1,8 @@
 using Microsoft.Playwright.NUnit;
 using Microsoft.Playwright;
 
+namespace PlaywrightTests;
+
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]
 public class GithubTests : PageTest
