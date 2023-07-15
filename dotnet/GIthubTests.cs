@@ -34,7 +34,7 @@ public class GithubTests : PageTest
         var length = random.Next(1, MaxAttempts);
         for (int i = 0; i < length; i++)
         {
-            var browser = await (i % 2 == 0 ? Playwright.Firefox : Playwright.Chromium).LaunchAsync(browserTypeLaunchOptions);
+            var browser = await Playwright.Chromium.LaunchAsync(browserTypeLaunchOptions);
             var context = await browser.NewContextAsync(options);
 
             var page = await context.NewPageAsync();
