@@ -22,7 +22,7 @@ public class GithubTests : PageTest
         };
 
 #if DEBUG
-    private readonly int MaxAttempts = 1;
+    private readonly int MaxAttempts = 10;
 #else
     private int MaxAttempts = 50;
 #endif
@@ -30,64 +30,65 @@ public class GithubTests : PageTest
     [Test]
     public async Task SqlCeQueryAnalyzer_Download()
     {
+        var browser = await Playwright.Chromium.LaunchAsync(browserTypeLaunchOptions);
+        var context = await browser.NewContextAsync(options);
+
+        var page = await context.NewPageAsync();
+        await page.GotoAsync("https://github.com/christianhelle/sqlcequery");
+        await page.GetByRole(AriaRole.Link, new() { NameString = "v1.3.3 Latest Apr 14, 2023on Apr 14" }).ClickAsync();
+        await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.3.3");
+        await page.GetByText("v1.3.3 Latest").ClickAsync();
+
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+        await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
+
         var random = new Random();
         var length = random.Next(1, MaxAttempts);
         for (int i = 0; i < length; i++)
         {
-            var browser = await Playwright.Chromium.LaunchAsync(browserTypeLaunchOptions);
-            var context = await browser.NewContextAsync(options);
 
-            var page = await context.NewPageAsync();
-            await page.GotoAsync("https://github.com/christianhelle/sqlcequery");
-            await page.GetByRole(AriaRole.Link, new() { NameString = "v1.3.3 Latest Apr 14, 2023on Apr 14" }).ClickAsync();
-            await page.WaitForURLAsync("https://github.com/christianhelle/sqlcequery/releases/tag/1.3.3");
-            await page.GetByText("v1.3.3 Latest").ClickAsync();
-
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            await page.Locator("body:has-text(\"Skip to content Toggle navigation Sign up Product Actions Automate any workflow \")").PressAsync("ArrowDown");
-            
             var download1 = await page.RunAndWaitForDownloadAsync(async () =>
             {
                 await page.GetByRole(AriaRole.Link, new() { NameString = "SQLCEQueryAnalyzer-Binaries-x64.zip" }).ClickAsync();
