@@ -76,7 +76,7 @@ public class MarpletplaceTests : PageTest
         await page.GotoAsync(url);
 
         var random = new Random();
-        var length = maxAttempts == 1 ? 1 : random.Next(1, maxAttempts);
+        var length = maxAttempts;// == 1 ? 1 : random.Next(1, maxAttempts);
         for (int i = 0; i < length; i++)
         {
             var filename = i + "_" + output;
