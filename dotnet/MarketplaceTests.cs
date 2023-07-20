@@ -69,16 +69,17 @@ public class MarpletplaceTests : PageTest
         {
             File.Delete(output);
         }
+        
+        IBrowser browser = await Playwright.Chromium.LaunchAsync(browserTypeLaunchOptions);
+        var context = await browser.NewContextAsync(options);
+        var page = await context.NewPageAsync();
+        await page.GotoAsync(url);
 
         var random = new Random();
         var length = maxAttempts == 1 ? 1 : random.Next(1, maxAttempts);
         for (int i = 0; i < length; i++)
         {
             var filename = i + "_" + output;
-            IBrowser browser = await Playwright.Chromium.LaunchAsync(browserTypeLaunchOptions);
-            var context = await browser.NewContextAsync(options);
-            var page = await context.NewPageAsync();
-            await page.GotoAsync(url);
             var download = await page.RunAndWaitForDownloadAsync(
                 async () =>
                 {
