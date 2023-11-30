@@ -37,6 +37,13 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
+      - name: Install Tools
+        run: |
+          dotnet tool install --global gfic
+          dotnet tool install --global rapicgen
+          dotnet tool install --global refitter
+          dotnet tool install --global httpgenerator
+
       - name: Run tests
         working-directory: dotnet
         continue-on-error: true
