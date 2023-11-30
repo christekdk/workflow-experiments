@@ -17,6 +17,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        version: [ 2012, 2015, 2017, 2019, 2022 ]
+        format: [ json, yaml ]
         os: [          
           ubuntu-20.04,
           ubuntu-22.04,
