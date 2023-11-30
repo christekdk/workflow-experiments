@@ -18,16 +18,19 @@ jobs:
       fail-fast: false
       matrix:
         version: [ 2012, 2015, 2017, 2019, 2022 ]
+        tool: [ gfic, rapicgen, refitter, httpgenerator ]
         format: [ json, yaml ]
         os: [          
           ubuntu-20.04,
           ubuntu-22.04,
-          macos-12,
-          macos-13,
-          macos-12-xl,
-          macos-13-xl,
+          ubuntu-latest,
+          # macos-12,
+          # macos-13,
+          # macos-12-xl,
+          # macos-13-xl,
           windows-2019,
-          windows-2022
+          windows-2022,
+          windows-latest
         ]
 
     steps:
@@ -35,14 +38,7 @@ jobs:
       - name: Setup .NET versions
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 8.0.x
-
-      - name: Install Tools
-        run: |
-          dotnet tool install --global gfic
-          dotnet tool install --global rapicgen
-          dotnet tool install --global refitter
-          dotnet tool install --global httpgenerator
+          dotnet-version: 6.0.x
 
       - name: Run tests
         working-directory: dotnet
@@ -71,3 +67,11 @@ jobs:
         run: Start-Process -FilePath 'C:/Program Files/Microsoft Visual Studio/2022/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q 0_ResWFileCodeGenerator.vsix' -Wait
         working-directory: dotnet/bin/Debug/net6.0
         if: ${{ matrix.os == 'windows-2022' }}
+
+      - name: Setup .NET versions
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install Tools
+        run: dotnet tool install --global ${{ matrix.tool }}
