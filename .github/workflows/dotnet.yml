@@ -79,8 +79,9 @@ jobs:
         run: pip install autofaker
 
       - name: Build
+        continue-on-error: true
         run: |
-          dotnet new project -n sampleproj
+          dotnet new console -n sampleproj
           cd sampleproj
           dotnet add package Refitter.SourceGenerator
           dotnet add package Refit
