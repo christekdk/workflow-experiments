@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         version: [ 2012, 2015, 2017, 2019, 2022 ]
-        tool: [ gfic, rapicgen, refitter, httpgenerator ]
+        tool: [ rapicgen, refitter, httpgenerator ]
         format: [ json, yaml ]
         os: [          
           ubuntu-20.04,
@@ -86,5 +86,7 @@ jobs:
           cd sampleproj
           dotnet add package Refitter.SourceGenerator
           dotnet add package Refit
+          dotnet add package AppCenterExtensions
+          dotnet add package HttpGenerator.Core
           dotnet restore
           dotnet build
