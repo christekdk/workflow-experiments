@@ -77,3 +77,12 @@ jobs:
 
       - name: Install Requirements from PyPi
         run: pip install autofaker
+
+      - name: Build
+        run: |
+          dotnet new project -n sampleproj
+          cd sampleproj
+          dotnet add package Refitter.SourceGenerator
+          dotnet add package Refit
+          dotnet restore
+          dotnet build
