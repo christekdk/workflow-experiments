@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - "*"  
-  schedule:
-    - cron: 13 0-7 * * *
+  # schedule:
+    # - cron: 13 0-7 * * *
     # - cron: */15 * * * *
 
 jobs:
