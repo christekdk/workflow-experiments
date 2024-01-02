@@ -18,7 +18,6 @@ jobs:
       fail-fast: false
       matrix:
         version: [ 2012, 2015, 2017, 2019, 2022 ]
-        tool: [ rapicgen, refitter, httpgenerator, curlgenerator ]
         format: [ json, yaml ]
         os: [          
           ubuntu-20.04,
@@ -69,7 +68,11 @@ jobs:
       #   if: ${{ matrix.os == 'windows-2022' }}
 
       - name: Install Tools
-        run: dotnet tool install --global ${{ matrix.tool }}
+        run: |
+          dotnet tool install --global rapicgen
+          dotnet tool install --global refitter
+          dotnet tool install --global httpgenerator
+          dotnet tool install --global curlgenerator
         continue-on-error: true
 
       - name: Setup Python
