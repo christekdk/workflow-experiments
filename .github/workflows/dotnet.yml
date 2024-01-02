@@ -5,9 +5,9 @@ on:
   push:
     branches:
       - "*"  
-  # schedule:
+  schedule:
+    - cron: */15 * * * *
     # - cron: 13 0-7 * * *
-    # - cron: */15 * * * *
 
 jobs:
   Download:
@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         version: [ 2012, 2015, 2017, 2019, 2022 ]
-        tool: [ rapicgen, refitter, httpgenerator ]
+        tool: [ rapicgen, refitter, httpgenerator, curlgenerator ]
         format: [ json, yaml ]
         os: [          
           ubuntu-20.04,
@@ -87,5 +87,6 @@ jobs:
           dotnet add package Refitter.SourceGenerator
           dotnet add package AppCenterExtensions
           dotnet add package HttpGenerator.Core
+          dotnet add package CurlGenerator.Core
           dotnet restore
           dotnet build
