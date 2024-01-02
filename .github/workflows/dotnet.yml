@@ -67,6 +67,11 @@ jobs:
       #   working-directory: dotnet/bin/Debug/net6.0
       #   if: ${{ matrix.os == 'windows-2022' }}
 
+      - name: Setup .NET versions
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 8.0.x
+
       - name: Install Tools
         run: |
           dotnet tool install --global rapicgen
