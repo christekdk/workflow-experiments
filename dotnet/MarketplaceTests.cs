@@ -24,7 +24,7 @@ public class MarpletplaceTests : PageTest
 #if DEBUG
     private const int MaxAttempts = 10;
 #else
-    private const int MaxAttempts = 50;
+    private const int MaxAttempts = 100;
 #endif
 
     // [Test]
