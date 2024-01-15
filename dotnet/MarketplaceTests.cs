@@ -21,11 +21,12 @@ public class MarpletplaceTests : PageTest
             AcceptDownloads = true
         };
 
-#if DEBUG
-    private const int MaxAttempts = 10;
-#else
-    private const int MaxAttempts = 100;
-#endif
+// #if DEBUG
+//     private const int MaxAttempts = 10;
+// #else
+//     private const int MaxAttempts = 100;
+// #endif
+    private const int MaxAttempts = 1;
 
     // [Test]
     // public async Task Download_APIClientCodeGenerator2022_For_VS2017()
