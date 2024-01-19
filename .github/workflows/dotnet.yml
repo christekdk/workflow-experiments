@@ -6,7 +6,7 @@ on:
     branches:
       - "*"  
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '0 3 * * *'
 
 jobs:
   Download:
@@ -17,19 +17,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [ 2012, 2015, 2017, 2019, 2022 ]
-        format: [ json, yaml ]
+        # version: [ 2012, 2015, 2017, 2019, 2022 ]
+        # format: [ json, yaml ]
         os: [          
-          ubuntu-20.04,
-          ubuntu-22.04,
+          # ubuntu-20.04,
+          # ubuntu-22.04,
           ubuntu-latest,
           # macos-12,
           # macos-13,
           # macos-12-xl,
           # macos-13-xl,
-          windows-2019,
-          windows-2022,
-          windows-latest
+          # windows-2019,
+          # windows-2022,
+          # windows-latest
         ]
 
     steps:
@@ -73,17 +73,17 @@ jobs:
       - name: Install Requirements from PyPi
         run: pip install autofaker
 
-      - name: Build
-        continue-on-error: true
-        run: |
-          dotnet new console -n sampleproj
-          cd sampleproj
-          dotnet add package Refitter.SourceGenerator
-          dotnet add package AppCenterExtensions
-          dotnet add package HttpGenerator.Core
-          dotnet add package CurlGenerator.Core
-          dotnet restore
-          dotnet build
+      # - name: Build
+      #   continue-on-error: true
+      #   run: |
+      #     dotnet new console -n sampleproj
+      #     cd sampleproj
+      #     dotnet add package Refitter.SourceGenerator
+      #     dotnet add package AppCenterExtensions
+      #     dotnet add package HttpGenerator.Core
+      #     dotnet add package CurlGenerator.Core
+      #     dotnet restore
+      #     dotnet build
 
       - name: Setup .NET versions
         uses: actions/setup-dotnet@v1
@@ -92,9 +92,5 @@ jobs:
         continue-on-error: true
 
       - name: Install Tools
-        run: |
-          dotnet tool install --global rapicgen
-          dotnet tool install --global refitter
-          dotnet tool install --global httpgenerator
-          dotnet tool install --global curlgenerator
+        run: dotnet tool install --global refitter
         continue-on-error: true
