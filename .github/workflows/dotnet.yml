@@ -92,5 +92,5 @@ jobs:
       - name: Install Tools
         run: |
           dotnet tool install --global refitter
-          dotnet tool install --global rapicgen
+          # dotnet tool install --global rapicgen
         continue-on-error: true
