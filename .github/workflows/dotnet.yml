@@ -6,7 +6,7 @@ on:
     branches:
       - "*"  
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/30 * * * *'
 
 jobs:
   Download:
@@ -89,8 +89,13 @@ jobs:
           dotnet-version: 8.0.x
         continue-on-error: true
 
-      - name: Install Tools
+      - name: Install refitter
         run: |
           dotnet tool install --global refitter
           # dotnet tool install --global rapicgen
         continue-on-error: true
+
+      # - name: Install rapicgen
+      #   run: |
+      #     dotnet tool install --global rapicgen
+      #   continue-on-error: true
