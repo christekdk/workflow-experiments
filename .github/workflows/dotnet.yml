@@ -98,3 +98,8 @@ jobs:
         run: |
           dotnet tool install --global rapicgen
         continue-on-error: true
+
+      - name: Install httpgenerator
+        run: |
+          dotnet tool install --global httpgenerator
+        continue-on-error: true
