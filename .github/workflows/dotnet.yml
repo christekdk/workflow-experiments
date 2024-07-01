@@ -82,6 +82,7 @@ jobs:
           dotnet new console -n sampleproj
           cd sampleproj
           dotnet add package Refitter.SourceGenerator
+          dotnet add package Refit
           dotnet restore
           dotnet build
 
