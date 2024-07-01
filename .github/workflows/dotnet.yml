@@ -6,7 +6,7 @@ on:
     branches:
       - "*"  
   schedule:
-    - cron: '*/20 * * * *'
+    - cron: '*/15 * * * *'
 
 jobs:
   Download:
@@ -20,17 +20,19 @@ jobs:
         version: [ 2012, 2015, 2017, 2019, 2022 ]        
         format: [ json, yaml ]
         spec: [ 2.0, 3.0, 3.1 ]
+        dotnet: [ 6.0, 8.0 ]
         os: [          
           ubuntu-20.04,
           ubuntu-22.04,
+          ubuntu-24.04,
           ubuntu-latest,
           # macos-12,
           # macos-13,
           # macos-12-xl,
           # macos-13-xl,
-          windows-2019,
-          windows-2022,
-          windows-latest
+          # windows-2019,
+          # windows-2022,
+          # windows-latest
         ]
 
     steps:
