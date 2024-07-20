@@ -21,7 +21,7 @@ jobs:
         format: [ json, yaml ]
         spec: [ 2.0, 3.0, 3.1 ]
         dotnet: [ 6.0, 8.0 ]
-        os: [          
+        os: [
           ubuntu-20.04,
           ubuntu-22.04,
           ubuntu-24.04,
@@ -82,9 +82,7 @@ jobs:
           dotnet new console -n sampleproj
           cd sampleproj
           dotnet add package Refitter.SourceGenerator
-          dotnet add package Refit
           dotnet restore
-          dotnet build
 
       - name: Setup .NET versions
         uses: actions/setup-dotnet@v1
@@ -105,4 +103,9 @@ jobs:
       - name: Install httpgenerator
         run: |
           dotnet tool install --global httpgenerator
+        continue-on-error: true
+
+      - name: Install curlgenerator
+        run: |
+          dotnet tool install --global curlgenerator
         continue-on-error: true
