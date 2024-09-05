@@ -95,15 +95,15 @@ jobs:
           dotnet tool install --global refitter
         continue-on-error: true
 
-      - name: Install rapicgen
-        run: |
-          dotnet tool install --global rapicgen
-        continue-on-error: true
+      #- name: Install rapicgen
+      #  run: |
+      #    dotnet tool install --global rapicgen
+      #  continue-on-error: true
 
-      - name: Install httpgenerator
-        run: |
-          dotnet tool install --global httpgenerator
-        continue-on-error: true
+      #- name: Install httpgenerator
+      #  run: |
+      #    dotnet tool install --global httpgenerator
+      #  continue-on-error: true
 
       #- name: Install curlgenerator
       #  run: |
