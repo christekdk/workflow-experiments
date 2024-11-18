@@ -9,8 +9,8 @@ on:
     - cron: '*/15 * * * *'
 
 jobs:
-  Download:
-    name: "Download and Install (${{ matrix.os }})"
+  test:
+    name: "Test (${{ matrix.os }})"
     runs-on: ${{ matrix.os }}
     continue-on-error: true
     timeout-minutes: 10
