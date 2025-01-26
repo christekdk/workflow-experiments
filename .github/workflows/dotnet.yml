@@ -55,10 +55,10 @@ jobs:
       #   working-directory: dotnet/bin/Debug/net6.0
       #   if: ${{ matrix.os == 'windows-2019' }}
 
-      - name: Install VSIX 2022
-        run: Start-Process -FilePath 'C:/Program Files/Microsoft Visual Studio/2022/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q 0_vs2022.vsix' -Wait
-        working-directory: dotnet/bin/Debug/net6.0
-        if: ${{ matrix.os == 'windows-2022' }}
+      # - name: Install VSIX 2022
+      #   run: Start-Process -FilePath 'C:/Program Files/Microsoft Visual Studio/2022/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q 0_vs2022.vsix' -Wait
+      #   working-directory: dotnet/bin/Debug/net6.0
+      #   if: ${{ matrix.os == 'windows-2022' }}
 
       # - name: Install ResW Code Generator (2019)
       #   run: Start-Process -FilePath 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q 0_ResWFileCodeGenerator.vsix' -Wait
