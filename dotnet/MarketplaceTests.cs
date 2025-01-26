@@ -29,7 +29,7 @@ public class MarpletplaceTests : PageTest
     private const int MaxAttempts = 1;
 
     // [Test]
-    // public async Task Download_APIClientCodeGenerator2022_For_VS2017()
+    // public async Task Download_APIClientCodeGenerator_For_VS2017()
     // {
     //     const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2017";
     //     const string output = "vs2017.vsix";
@@ -46,14 +46,14 @@ public class MarpletplaceTests : PageTest
     //     Assert.That(File.Exists(output), Is.True);
     // }
 
-    // [Test]
-    // public async Task Download_APIClientCodeGenerator2022_For_VS2022()
-    // {
-    //     const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022";
-    //     const string output = "vs2022.vsix";
-    //     await Download(url, output);
-    //     Assert.That(File.Exists(output), Is.True);
-    // }
+    [Test]
+    public async Task Download_APIClientCodeGenerator_For_VS2022()
+    {
+        const string url = "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022";
+        const string output = "vs2022.vsix";
+        await Download(url, output);
+        Assert.That(File.Exists(output), Is.True);
+    }
 
     // [Test]
     // public async Task Download_ResWFileCodeGenerator()
