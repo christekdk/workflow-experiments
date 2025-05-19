@@ -112,4 +112,5 @@ jobs:
 
       - name: VS COde Extension
         run : |
+          sudo snap install --classic code
           code --install-extension ChristianResmaHelle.rest-api-client-code-generator
