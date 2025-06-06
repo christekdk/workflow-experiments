@@ -95,6 +95,11 @@ jobs:
           dotnet tool install --global refitter
         continue-on-error: true
 
+      - name: Install azdocli
+        run: |
+          cargo install azdocli
+        continue-on-error: true
+
       #- name: Install rapicgen
       #  run: |
       #    dotnet tool install --global rapicgen
