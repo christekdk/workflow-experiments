@@ -100,6 +100,11 @@ jobs:
       #     cargo install azdocli
       #   continue-on-error: true
 
+      - name: snap install azdocli
+        run: |
+          snap install azdocli
+        continue-on-error: true
+
       #- name: Install rapicgen
       #  run: |
       #    dotnet tool install --global rapicgen
