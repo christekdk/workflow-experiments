@@ -105,6 +105,11 @@ jobs:
           sudo snap install azdocli
         continue-on-error: true
 
+      - name: snap install httprunner
+        run: |
+          sudo snap install httprunner
+        continue-on-error: true
+
       #- name: Install rapicgen
       #  run: |
       #    dotnet tool install --global rapicgen
