@@ -102,7 +102,7 @@ jobs:
 
       - name: snap install azdocli
         run: |
-          snap install azdocli
+          sudo snap install azdocli
         continue-on-error: true
 
       #- name: Install rapicgen
