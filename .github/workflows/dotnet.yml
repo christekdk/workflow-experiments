@@ -105,10 +105,10 @@ jobs:
       #    sudo snap install azdocli
       #  continue-on-error: true
 
-      - name: snap install httprunner
-        run: |
-          sudo snap install httprunner
-        continue-on-error: true
+      - name: Run HTTP tests
+        uses: christianhelle/httprunner-action@v1
+        with:
+          discover: true
 
       #- name: Install rapicgen
       #  run: |
