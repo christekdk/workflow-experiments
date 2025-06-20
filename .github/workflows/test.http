@@ -1,0 +1,4 @@
+@hostname=google.com
+
+### Simple GET request
+GET https://{{hostname}}
