@@ -110,10 +110,10 @@ jobs:
         with:
           discover: true
 
-      #- name: Install rapicgen
-      #  run: |
-      #    dotnet tool install --global rapicgen
-      #  continue-on-error: true
+      - name: Install rapicgen
+        run: |
+          dotnet tool install --global rapicgen
+        continue-on-error: true
 
       #- name: Install httpgenerator
       #  run: |
@@ -128,4 +128,4 @@ jobs:
       - name: VS Code Extensions
         run : |
           sudo snap install --classic code
-          code --install-extension ChristianResmaHelle.apiclientcodegen
+          code --force --install-extension ChristianResmaHelle.apiclientcodegen
