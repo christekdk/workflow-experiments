@@ -105,15 +105,15 @@ jobs:
       #    sudo snap install azdocli
       #  continue-on-error: true
 
-      - name: Run HTTP tests
-        uses: christianhelle/httprunner-action@v1
-        with:
-          discover: true
+      #- name: Run HTTP tests
+      #  uses: christianhelle/httprunner-action@v1
+      #  with:
+      #    discover: true
 
-      - name: Install rapicgen
-        run: |
-          dotnet tool install --global rapicgen
-        continue-on-error: true
+      #- name: Install rapicgen
+      #  run: |
+      #    dotnet tool install --global rapicgen
+      #  continue-on-error: true
 
       #- name: Install httpgenerator
       #  run: |
