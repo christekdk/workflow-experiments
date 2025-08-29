@@ -125,7 +125,7 @@ jobs:
       #    dotnet tool install --global curlgenerator
       #  continue-on-error: true
 
-      - name: VS Code Extensions
-        run : |
-          sudo snap install --classic code
-          code --force --install-extension ChristianResmaHelle.apiclientcodegen
+      #- name: VS Code Extensions
+      #  run : |
+      #    sudo snap install --classic code
+      #    code --force --install-extension ChristianResmaHelle.apiclientcodegen
