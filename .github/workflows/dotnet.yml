@@ -95,6 +95,11 @@ jobs:
           dotnet tool install --global refitter
         continue-on-error: true
 
+      - name: snap install httprunner
+        run: |
+          sudo snap install httprunner
+        continue-on-error: true
+
       # - name: Install azdocli
       #   run: |
       #     cargo install azdocli
@@ -125,8 +130,8 @@ jobs:
       #    dotnet tool install --global curlgenerator
       #  continue-on-error: true
 
-      - name: VS Code Extensions
-        run: |
-          sudo snap install --classic code
-          #code --force --install-extension ChristianResmaHelle.apiclientcodegen
-          code --force --install-extension ChristianResmaHelle.http-file-generator
+      #- name: VS Code Extensions
+      #  run: |
+      #    sudo snap install --classic code
+      #    #code --force --install-extension ChristianResmaHelle.apiclientcodegen
+      #    code --force --install-extension ChristianResmaHelle.http-file-generator
