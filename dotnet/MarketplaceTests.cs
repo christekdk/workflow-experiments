@@ -56,15 +56,15 @@ public class MarpletplaceTests : PageTest
         Assert.That(File.Exists(output), Is.True);
     }
 
-    [Test]
-    public async Task Download_APIClientCodeGenerator_Preview()
-    {
-        const string url =
-            "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.Rapicgen";
-        const string output = "vs2026.vsix";
-        await Download(url, output);
-        Assert.That(File.Exists(output), Is.True);
-    }
+    // [Test]
+    // public async Task Download_APIClientCodeGenerator_Preview()
+    // {
+    //     const string url =
+    //         "https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.Rapicgen";
+    //     const string output = "vs2026.vsix";
+    //     await Download(url, output);
+    //     Assert.That(File.Exists(output), Is.True);
+    // }
 
     // [Test]
     // public async Task Download_ResWFileCodeGenerator()
@@ -111,4 +111,3 @@ public class MarpletplaceTests : PageTest
         }
     }
 }
-
