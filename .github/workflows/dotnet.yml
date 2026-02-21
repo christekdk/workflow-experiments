@@ -95,20 +95,20 @@ jobs:
           dotnet tool install --global refitter
         continue-on-error: true
 
-      - name: snap install httprunner
-        run: |
-          sudo snap install httprunner
-        continue-on-error: true
+      #- name: snap install httprunner
+      #  run: |
+      #    sudo snap install httprunner
+      #  continue-on-error: true
 
       # - name: Install azdocli
       #   run: |
       #     cargo install azdocli
       #   continue-on-error: true
 
-      - name: snap install azdocli
-        run: |
-          sudo snap install azdocli
-        continue-on-error: true
+      #- name: snap install azdocli
+      #  run: |
+      #    sudo snap install azdocli
+      #  continue-on-error: true
 
       #- name: Run HTTP tests
       #  uses: christianhelle/httprunner-action@v1
