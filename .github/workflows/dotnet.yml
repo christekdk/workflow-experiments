@@ -22,17 +22,17 @@ jobs:
         spec: [2.0, 3.0, 3.1]
         dotnet: [10.0, 8.0]
         os: [
-            # ubuntu-20.04,
+            ubuntu-slim,
             ubuntu-22.04,
             ubuntu-24.04,
             ubuntu-latest,
-            # macos-12,
-            # macos-13,
-            # macos-12-xl,
-            # macos-13-xl,
-            # windows-2019,
-            # windows-2022,
-            # windows-latest
+            macos-14,
+            macos-15,
+            macos-26
+            macos-latest,
+            windows-2022,
+            windows-latest
+            windows-2025-vs2026
           ]
 
     steps:
@@ -76,13 +76,13 @@ jobs:
       - name: Install Requirements from PyPi
         run: pip install autofaker
 
-      #- name: Build
-      #  continue-on-error: true
-      #  run: |
-      #    dotnet new console -n sampleproj
-      #    cd sampleproj
-      #    dotnet add package Refitter.SourceGenerator
-      #    dotnet restore
+      - name: Build
+        continue-on-error: true
+        run: |
+          dotnet new console -n sampleproj
+          cd sampleproj
+          dotnet add package Refitter.MSBuild
+          dotnet restore
 
       - name: Setup .NET versions
         uses: actions/setup-dotnet@v1
@@ -100,15 +100,10 @@ jobs:
       #    sudo snap install httprunner
       #  continue-on-error: true
 
-      # - name: Install azdocli
-      #   run: |
-      #     cargo install azdocli
-      #   continue-on-error: true
-
-      #- name: snap install azdocli
-      #  run: |
-      #    sudo snap install azdocli
-      #  continue-on-error: true
+      - name: snap install azdocli
+        run: |
+          sudo snap install azdocli
+        continue-on-error: true
 
       #- name: Run HTTP tests
       #  uses: christianhelle/httprunner-action@v1
